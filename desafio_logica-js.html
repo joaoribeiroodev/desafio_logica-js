@@ -7,44 +7,67 @@
 </head>
 <body>
     <script>
+
+        //recebendo a distancia percorrida
         let distanciaPercorrida = parseFloat(prompt(`Qual a distância percorrida de sua casa até seu trabalho (em km) ?`));
         console.log(`A distancia percorrida é ${distanciaPercorrida}`);
 
+        //recebendo o consumo médio do veiculo
         let consumoMedio = parseFloat(prompt(`Qual o consumo médio do veículo (em Km/L) ?`));
         console.log(`O consumo medio de litros por km é ${consumoMedio}`);
 
+        //calcula o consumo necessario para realizar o percurso
         var consumoNecessarioLitros = distanciaPercorrida / consumoMedio;
         console.log(`O consumo necessario é ${consumoNecessarioLitros} litros`);
-        document.write(`<br> O consumo necessário em litros é ${consumoNecessarioLitros.toFixed(2)} litros`);
+        document.write(`<br> O consumo necessário em litros é ${consumoNecessarioLitros} litros`);
 
+        //recebe a quantidade de postos pesquisados
         let postosPesquisados = parseInt(prompt(`Em quantos postos vc pesquisou ?`));
         console.log(`A quantidade de postos pesqusiados é ${postosPesquisados}`);
 
         let somaValoresPesquisados = 0;
         let menorValorEncontrado;
 
+        //pede os valores de cada posto, a partir da quantidade de postos pesquisados que foi inserido
         for(let i = 1; i <= postosPesquisados; i++) {
-            let valoresEncontrados = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${i}:`));
+        let valoresEncontrados;
+
+        // bloco de código que verifica se o valor é um texto ou numero e repete até que seja inserido apenas número
+        while (true) {
+            let entrada = prompt(`Digite o valor encontrado (em R$) no posto ${i}:`);
+            valoresEncontrados = parseFloat(entrada.replace(',', '.'));
+
+            if (!isNaN(valoresEncontrados)) {
+            break;
+
+            } else {
+                alert("Entrada inválida! Digite apenas números.");
+            }
+
+            }
+
             somaValoresPesquisados += valoresEncontrados;
             
-            if(i === 1) {
-                menorValorEncontrado = valoresEncontrados;
-            } else if(valoresEncontrados < menorValorEncontrado) {
-                menorValorEncontrado = valoresEncontrados;
+            if (i === 1 || valoresEncontrados < menorValorEncontrado) {
+            menorValorEncontrado = valoresEncontrados;
+
             }
         }
 
-        document.write(`<br> O menor valor pesquisado é ${menorValorEncontrado.toFixed(2)}`);
+        document.write(`<br> O menor valor pesquisado é R$${menorValorEncontrado.toFixed(2)}`);
 
         console.log(`A soma dos valores é: ${somaValoresPesquisados}`);
         console.log(`O menor valor pesquisado foi: R$ ${menorValorEncontrado}`);
 
+        //calcula a media dos valores pesquisados no posto
         var media = somaValoresPesquisados / postosPesquisados;
-        document.write(`<br> A média dos valores pesquisados é ${media.toFixed(2)}`);
+        document.write(`<br> A média dos valores pesquisados é R$${media.toFixed(2)}`);
         console.log(`A media dos valores pesquisados é ${media}`);
 
+        //calcula o gasto diario
         var gastoDiario = 2*(consumoNecessarioLitros*menorValorEncontrado);
-        document.write(`<br> O gasto diário (ida e volta) é ${gastoDiario}`);
+        document.write(`<br> O gasto diário (ida e volta) é R$${gastoDiario}`);
+        console.log(`O gasto diário é ${gastoDiario}`);
 
 
     </script>
