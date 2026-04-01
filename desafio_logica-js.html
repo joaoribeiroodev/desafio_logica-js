@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Lógica JavaScript</title>
+</head>
+<body>
+    <script>
+        let distanciaPercorrida = parseFloat(prompt(`Qual a distância percorrida de sua casa até seu trabalho (em km) ?`));
+        console.log(`A distancia percorrida é ${distanciaPercorrida}`);
+
+        let consumoMedio = parseFloat(prompt(`Qual o consumo médio do veículo (em Km/L) ?`));
+        console.log(`O consumo medio de litros por km é ${consumoMedio}`);
+
+        var consumoNecessarioLitros = distanciaPercorrida / consumoMedio;
+        console.log(`O consumo necessario é ${consumoNecessarioLitros} litros`);
+        document.write(`<br> O consumo necessário em litros é ${consumoNecessarioLitros.toFixed(2)} litros`);
+
+        let postosPesquisados = parseInt(prompt(`Em quantos postos vc pesquisou ?`));
+        console.log(`A quantidade de postos pesqusiados é ${postosPesquisados}`);
+
+        let somaValoresPesquisados = 0;
+        let menorValorEncontrado;
+
+        for(let i = 1; i <= postosPesquisados; i++) {
+            let valoresEncontrados = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${i}:`));
+            somaValoresPesquisados += valoresEncontrados;
+            
+            if(i === 1) {
+                menorValorEncontrado = valoresEncontrados;
+            } else if(valoresEncontrados < menorValorEncontrado) {
+                menorValorEncontrado = valoresEncontrados;
+            }
+        }
+
+        document.write(`<br> O menor valor pesquisado é ${menorValorEncontrado.toFixed(2)}`);
+
+        console.log(`A soma dos valores é: ${somaValoresPesquisados}`);
+        console.log(`O menor valor pesquisado foi: R$ ${menorValorEncontrado}`);
+
+        var media = somaValoresPesquisados / postosPesquisados;
+        document.write(`<br> A média dos valores pesquisados é ${media.toFixed(2)}`);
+        console.log(`A media dos valores pesquisados é ${media}`);
+
+        var gastoDiario = 2*(consumoNecessarioLitros*menorValorEncontrado);
+        document.write(`<br> O gasto diário (ida e volta) é ${gastoDiario}`);
+
+
+    </script>
+</body>
+</html>
