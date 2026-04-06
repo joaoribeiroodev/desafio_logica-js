@@ -10,6 +10,7 @@
 <body>
     <script>
 
+        //função que pede valores (inteiros ou decimais)
         function pedirNumero(mensagem) {
             while (true) {
                 let entrada = prompt(mensagem);
@@ -21,7 +22,6 @@
 
                 entrada = entrada.replace(",", ".").trim();
 
-
                 let valor = Number(entrada);
 
                 if (!isNaN(valor) && valor > 0)
@@ -31,6 +31,7 @@
             }
         }
 
+        //função que pede apenas valores inteiros
         function pedirInteiro(mensagem) {
             while (true) {
                 let entrada = prompt(mensagem);
@@ -52,6 +53,7 @@
             }
         }
 
+        //função para imprimir uma mensagem formatada
         function imprimirTexto(mensagem) {
             document.write(mensagem);
             document.write("<br>");
@@ -63,9 +65,9 @@
 
         //recebendo o consumo médio do veiculo
         let consumoMedio = pedirNumero(`Qual o consumo médio do veículo (em Km/L) ?`);
-        console.log(`O consumo medio de litros por km é ${consumoMedio}`);
+        console.log(`O consumo medio é ${consumoMedio} km/L`);
 
-        //calcula o consumo necessario para realizar o percurso
+        //calcula e exibe o consumo necessario para realizar o percurso
         let consumoNecessarioLitros = distanciaPercorrida / consumoMedio;
         console.log(`O consumo necessario é ${consumoNecessarioLitros} litros`);
         imprimirTexto(`O consumo necessário em litros é ${consumoNecessarioLitros} litros`);
@@ -92,19 +94,18 @@
         console.log(`A soma dos valores é: ${somaPrecos}`);
 
         //exibe o menor valor pesquisado
-        imprimirTexto(`O menor valor pesquisado é R$${menorValorEncontrado.toFixed(2)}`);
         console.log(`O menor valor pesquisado foi: R$ ${menorValorEncontrado}`);
+        imprimirTexto(`O menor valor pesquisado é R$${menorValorEncontrado.toFixed(2)}`);
 
-        //calcula a media dos valores pesquisados no posto
+        //calcula e exibe a media dos valores pesquisados no posto
         let mediaPrecos = somaPrecos / postosPesquisados;
-        imprimirTexto(`A média dos valores pesquisados é R$${mediaPrecos.toFixed(2)}`);
         console.log(`A media dos valores pesquisados é ${mediaPrecos}`);
+        imprimirTexto(`A média dos valores pesquisados é R$${mediaPrecos.toFixed(2)}`);
 
-        //calcula o gasto diario
+        //calcula e exibe o gasto diario (ida e volta)
         let gastoDiario = 2 * (consumoNecessarioLitros * menorValorEncontrado);
+        console.log(`O gasto diário é R$${gastoDiario.toFixed(2)}`);
         imprimirTexto(`O gasto diário (ida e volta) é R$${gastoDiario}`);
-        console.log(`O gasto diário é R$${gastoDiario}`);
-
 
     </script>
 </body>
