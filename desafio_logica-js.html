@@ -69,7 +69,7 @@
 
         //calcula e exibe o consumo necessario para realizar o percurso
         let consumoNecessarioLitros = distanciaPercorrida / consumoMedio;
-        console.log(`O consumo necessario é ${consumoNecessarioLitros} litros`);
+        console.log(`O consumo necessario é ${consumoNecessarioLitros}L`);
         imprimirTexto(`O consumo necessário em litros é ${consumoNecessarioLitros} litros`);
 
         //recebe a quantidade de postos pesquisados
@@ -105,7 +105,7 @@
         //calcula e exibe o gasto diario (ida e volta)
         let gastoDiario = 2 * (consumoNecessarioLitros * menorValorEncontrado);
         console.log(`O gasto diário é R$${gastoDiario.toFixed(2)}`);
-        imprimirTexto(`O gasto diário (ida e volta) é R$${gastoDiario}`);
+        imprimirTexto(`O gasto diário (ida e volta) é R$${gastoDiario.toFixed(2)}`);
 
     </script>
 </body>
