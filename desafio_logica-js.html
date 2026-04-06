@@ -19,9 +19,13 @@
                     continue;
                 }
 
-                let valor = parseFloat(entrada.replace(',', '.'));
+                entrada = entrada.replace(",", ".").trim();
 
-                if (!isNaN(valor) && valor > 0) return valor;
+
+                let valor = Number(entrada);
+
+                if (!isNaN(valor) && valor > 0)
+                    return valor;
 
                 alert("Digite um número válido!");
             }
@@ -36,9 +40,11 @@
                     continue;
                 }
 
+                entrada = entrada.trim();
+
                 let valor = Number(entrada);
 
-                if (Number.isInteger(valor) && valor > 0) {
+                if (Number.isInteger(valor) && valor > 0 && entrada === valor.toString()) {
                     return valor;
                 }
 
